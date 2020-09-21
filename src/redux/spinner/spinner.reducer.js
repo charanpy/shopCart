@@ -1,22 +1,19 @@
-import shopActionTypes from './shop.types'
+import spinnerType from './spinner.type.js';
 
 const INITIAL_STATE = {
-            collections: null
+            loading: true
 }
 
-const shopReducer = (state = INITIAL_STATE, action) => {
+const spinnerReducer = (state = INITIAL_STATE, action) => {
             switch (action.type) {
-
-                        case shopActionTypes.UPDATE_COLLECTION:
+                        case spinnerType.UPDATE_LOADING:
                                     return {
                                                 ...state,
-                                                collections: action.payload
+                                                loading: !state.loading
                                     }
-
                         default:
                                     return state;
             }
 }
 
-
-export default shopReducer;
+export default spinnerReducer;

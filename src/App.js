@@ -12,11 +12,16 @@ import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from './redux/user/user.selector'
 import Checkout from './pages/checkout/checkout';
 import Category from './pages/category/category'
+import WithSpinner from './components/with-spinner/with-spinner';
+import { selectSpinnerLoading } from './redux/spinner/spinner.selector'
 
-
+//const CollectionOverviewWithSpinner = WithSpinner(ColletionOverview);
+const CollectionPageWithSpinner = WithSpinner(Category);
 
 class App extends React.Component {
-
+  state = {
+    loading: true
+  }
   unsubscribeFromAuth = null;
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
@@ -52,7 +57,11 @@ class App extends React.Component {
           <Route exact path='/' component={HomePage} />
           <Route exact path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={Checkout} />
-          <Route path="/shop/:categoryId" component={Category} />
+          <Route path="/shop/:categoryId" render={(props) => (
+            <CollectionPageWithSpinner
+              isLoading={this.props.loading}
+              {...props}
+            />)} />
           <Route path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)
           } />
         </Switch>
@@ -61,7 +70,8 @@ class App extends React.Component {
   }
 }
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  loading: selectSpinnerLoading
 })
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
