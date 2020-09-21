@@ -1,12 +1,17 @@
 import React from "react";
-import CustomButton from "../custom-button/custom-button.component";
+
 import "./collection-item.styles.scss";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.action";
+import {
+  AddtoCartButton,
+  ImageContainer,
+  CollectionItemContainer,
+} from "./collection-item.styles";
+
 const CollectionItem = ({ item, addItem }) => (
-  <div className="collection-item">
-    <div
-      className="image"
+  <CollectionItemContainer>
+    <ImageContainer
       style={{
         backgroundImage: `url(${item.imageUrl})`,
       }}
@@ -15,10 +20,10 @@ const CollectionItem = ({ item, addItem }) => (
       <span className="name">{item.name}</span>
       <span className="price">{item.price}</span>
     </div>
-    <CustomButton inverted onClick={() => addItem(item)}>
+    <AddtoCartButton invertedAndCollection onClick={() => addItem(item)}>
       Add to cart
-    </CustomButton>
-  </div>
+    </AddtoCartButton>
+  </CollectionItemContainer>
 );
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),

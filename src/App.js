@@ -13,6 +13,8 @@ import { selectCurrentUser } from './redux/user/user.selector'
 import Checkout from './pages/checkout/checkout';
 import Category from './pages/category/category'
 
+
+
 class App extends React.Component {
 
   unsubscribeFromAuth = null;
@@ -35,6 +37,7 @@ class App extends React.Component {
 
       }
       this.props.setCurrentUser(user)
+
 
     })
   }
