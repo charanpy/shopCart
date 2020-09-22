@@ -11,12 +11,6 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from './redux/user/user.selector'
 import Checkout from './pages/checkout/checkout';
-import Category from './pages/category/category'
-import WithSpinner from './components/with-spinner/with-spinner';
-import { selectIsCollectionFetching } from './redux/shop/shop.selector'
-
-//const CollectionOverviewWithSpinner = WithSpinner(ColletionOverview);
-const CollectionPageWithSpinner = WithSpinner(Category);
 
 class App extends React.Component {
   state = {
@@ -55,15 +49,10 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/shop' component={ShopPage} />
+          <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={Checkout} />
-          <Route path="/shop/:categoryId" render={(props) => (
-            <CollectionPageWithSpinner
-              isLoading={this.props.isFetching}
-              {...props}
-            />)} />
-          <Route path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)
-          } />
+          <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)}
+          />
         </Switch>
       </div>
     );
@@ -71,7 +60,6 @@ class App extends React.Component {
 }
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  isFetching: selectIsCollectionFetching
 })
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
