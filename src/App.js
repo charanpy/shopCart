@@ -13,7 +13,7 @@ import { selectCurrentUser } from './redux/user/user.selector'
 import Checkout from './pages/checkout/checkout';
 import Category from './pages/category/category'
 import WithSpinner from './components/with-spinner/with-spinner';
-import { selectSpinnerLoading } from './redux/spinner/spinner.selector'
+import { selectIsCollectionFetching } from './redux/shop/shop.selector'
 
 //const CollectionOverviewWithSpinner = WithSpinner(ColletionOverview);
 const CollectionPageWithSpinner = WithSpinner(Category);
@@ -59,7 +59,7 @@ class App extends React.Component {
           <Route exact path='/checkout' component={Checkout} />
           <Route path="/shop/:categoryId" render={(props) => (
             <CollectionPageWithSpinner
-              isLoading={this.props.loading}
+              isLoading={this.props.isFetching}
               {...props}
             />)} />
           <Route path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)
@@ -71,7 +71,7 @@ class App extends React.Component {
 }
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  loading: selectSpinnerLoading
+  isFetching: selectIsCollectionFetching
 })
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))

@@ -52,6 +52,7 @@ export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) =>
 }
 
 export const convertCollectionSnapshotToMap = (collections) => {
+            console.log(collections);
             const transformedCollection = collections.docs.map(doc => {
                         const { title, items } = doc.data();
 
@@ -62,6 +63,7 @@ export const convertCollectionSnapshotToMap = (collections) => {
                                     items
                         }
             })
+            console.log(transformedCollection)
             return transformedCollection.reduce((acc, collection) => {
                         acc[collection.title.toLowerCase()] = collection;
                         return acc;
