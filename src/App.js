@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import './App.css';
-import { setCurrentUser } from './redux/user/user.action'
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
@@ -17,30 +16,9 @@ class App extends React.Component {
     loading: true
   }
   unsubscribeFromAuth = null;
-  componentDidMount() {
-    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-    //   // 
-    //   if (user) {
-    //     const userRef = await createUserProfileDocument(user);
-    //     userRef.onSnapshot(snapShot => {
+  // componentDidMount() {
 
-    //       this.props.setCurrentUser({
-    //         currentUser: {
-    //           id: snapShot.id,
-    //           ...snapShot.data()
-    //         }
-    //       }, () => {
-    //         console.log(this.state);
-    //       })
-    //     })
-
-    // }
-    //     this.props.setCurrentUser(user)
-
-
-    //   })
-    console.log('empty')
-  }
+  // }
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
@@ -62,7 +40,5 @@ class App extends React.Component {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 })
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default connect(mapStateToProps)(App);
