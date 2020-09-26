@@ -6,7 +6,7 @@ export const fetchCollectionStart = () => ({
 
 })
 
-export const fetchCollectionSuccess = collectionsMap => ({
+export const fetchCollectionSuccess = (collectionsMap) => ({
             type: shopActionTypes.FETCH_COLLECTIONS_SUCCESS,
             payload: collectionsMap
 })
