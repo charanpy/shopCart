@@ -29,6 +29,16 @@ export const AddtoCartButton = styled.button`
    &:hover{
                background: black;
                color:white;
+
+               
+@media screen and (max-width:800px) {
+
+    display: block;
+    opacity: 0.9;
+    min-width: unset;
+    padding: 0 10px 0 10px;
+  
+}
    }
 `
 
@@ -61,4 +71,20 @@ width: 22vw;
       
     }
   }
+  @media screen and (max-width:800px){
+    width:42vw;
+
+    
+  &:hover {
+    ${ImageContainer} {
+      opacity: unset;
+    }
+
+  ${AddtoCartButton} {
+         
+            opacity: unset;
+      
+    }
+  }}
+
     `

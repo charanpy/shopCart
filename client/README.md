@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD:client/README.md
 # How to fork and clone
 
 One quick note about cloning this project. If you wish to make commits and push the code up after cloning this repo, you should fork the project first. In order to own your own copy of this repository, you have to fork it so you get your own copy on your own profile!
@@ -15,3 +16,5 @@ After forking the project, simply clone it the way you would from the new forked
 ## Install dependencies
 
 In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the dependencies in the project.
+=======
+>>>>>>> efb4965f4b504f1fb610710a83972defef0be81d:README.md
