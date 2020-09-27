@@ -8,7 +8,7 @@ import Header from './components/header/header.component';
 
 import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from './redux/user/user.selector'
-
+import Spinner from './components/spinner/spinner';
 
 import { checkUserSession } from './redux/user/user.action'
 
@@ -30,7 +30,7 @@ const App = ({ checkUserSession, currentUser }) => {
       <GlobalStyle />
       <Header />
       <Switch>
-        <Suspense fallback={<div>...Loading</div>}>
+        <Suspense fallback={<Spinner />}>
           <Route exact path='/' component={HomePage} />
 
           <Route path='/shop' component={ShopPage} />
