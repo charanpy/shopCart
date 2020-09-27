@@ -18,4 +18,12 @@
   .sign-in {
     width: 80vw;
   }
+
+  .buttons {
+    width: 90vw;
+  }
+
+  .buttons button {
+    min-width: 130px !important;
+  }
 }
