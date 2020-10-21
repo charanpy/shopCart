@@ -53,7 +53,7 @@ const SignIn = ({ emailSigninStart, googleSigninStart }) => {
           label="password"
         />
         <div className="buttons">
-          <CustomButton type="submit"> Sign in </CustomButton>
+          <CustomButton type="submit" > Sign in </CustomButton>
           <CustomButton type="button" onClick={googleSigninStart}>
             Sign in with Google
           </CustomButton>
